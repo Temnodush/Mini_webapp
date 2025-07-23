@@ -1,25 +1,47 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import os
 
 # Параметры запуска сервера
 hostName = "localhost"
 serverPort = 8000
 
 
+
+
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        """Метод для обработки GET-запросов"""
+        # Обработка корневого запроса
+        if self.path == "/":
+            self.path = "/contacts.html"
+
         try:
-            # Читаем HTML-файл
-            with open("contacts.html", "r", encoding="utf-8") as file:
-                html_content = file.read()
+            # Проверяем существование файла
+            file_path = self.path[1:]
+            if not os.path.exists(file_path):
+                raise FileNotFoundError
 
-            # Устанавливаем код ответа и заголовки
+            # Определяем MIME-тип
+            if self.path.endswith(".html"):
+                mimetype = 'text/html'
+            elif self.path.endswith(".css"):
+                mimetype = 'text/css'
+            elif self.path.endswith(".js"):
+                mimetype = 'application/javascript'
+            elif self.path.endswith(".jpg") or self.path.endswith(".jpeg"):
+                mimetype = 'image/jpeg'
+            elif self.path.endswith(".png"):
+                mimetype = 'image/png'
+            else:
+                mimetype = 'text/plain'
+
+            # Читаем и отправляем файл
+            with open(file_path, 'rb') as file:  # Бинарный режим!
+                content = file.read()
+
             self.send_response(200)
-            self.send_header("Content-type", "text/html")
+            self.send_header("Content-type", mimetype)
             self.end_headers()
-
-            # Отправляем содержимое HTML-файла в ответ
-            self.wfile.write(bytes(html_content, "utf-8"))
+            self.wfile.write(content)  # Отправляем бинарные данные
         except FileNotFoundError:
             # Если файл не найден, отправляем код 404
             self.send_response(404)
