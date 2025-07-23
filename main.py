@@ -6,8 +6,6 @@ hostName = "localhost"
 serverPort = 8000
 
 
-
-
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
         # Обработка корневого запроса
@@ -19,8 +17,6 @@ class MyServer(BaseHTTPRequestHandler):
             file_path = self.path[1:]
             if not os.path.exists(file_path):
                 raise FileNotFoundError
-
-            # Определяем MIME-тип
             if self.path.endswith(".html"):
                 mimetype = 'text/html'
             elif self.path.endswith(".css"):
@@ -35,7 +31,7 @@ class MyServer(BaseHTTPRequestHandler):
                 mimetype = 'text/plain'
 
             # Читаем и отправляем файл
-            with open(file_path, 'rb') as file:  # Бинарный режим!
+            with open(file_path, 'rb') as file:
                 content = file.read()
 
             self.send_response(200)
