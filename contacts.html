@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Меню с профилем</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="d-flex">
+    <!-- Боковое меню -->
+    <div class="d-flex flex-column bg-dark text-white p-3" style="width: 250px; min-height: 100vh;">
+        <!-- Верхняя часть с заголовком и меню -->
+        <div>
+            <h4 class="mb-4"><i class="bi bi-bootstrap-fill"></i> Меню</h4>
+            <hr class="border-top border-secondary my-3">
+            <ul class="nav flex-column mb-3">
+                <li class="nav-item">
+                    <a class="nav-link text-white bg-dark rounded" href="index.html"><i class="bi bi-house me-2"></i> Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white bg-dark rounded mb-2" href="orders.html"><i class="bi bi-bag-check me-2"></i> Заказы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white bg-dark rounded mb-2" href="category.html"><i class="bi bi-list-task me-2"></i> Категории</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-white bg-primary rounded mb-2" href="contacts.html"><i class="bi bi-person-circle me-2"></i> Контакты</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Растягивающийся разделитель -->
+        <div class="flex-grow-1"></div>
+
+        <!-- Разделительная черта -->
+        <hr class="border-top border-secondary my-3">
+
+        <!-- Секция профиля -->
+        <div class="d-flex align-items-center">
+            <!-- Аватарка -->
+            <img src="img/profile_img.jpg" class="rounded-circle me-2" width="40" height="40">
+
+            <!-- Выпадающее меню профиля -->
+            <div class="dropdown">
+                <button class="btn btn-link text-white dropdown-toggle p-0 text-decoration-none"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Пользователь
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item" href="#">Профиль</a></li>
+                    <li><a class="dropdown-item" href="#">Выйти</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content p-5">
+        <h1 class="mb-4 d-flex justify-content-center">Контакты</h1>
+        <div class="row d-flex p-4 ms-2 justify-content-center" style="margin-left: 200px">
+            <!-- Форма -->
+            <div class="col-md-6 bg-light p-3 rounded">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Имя</label>
+                        <input type="text" class="form-control" id="name" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Почта</label>
+                        <div class="input-group">
+                            <span class="input-group-text">@</span>
+                            <input type="email" class="form-control" id="email" required/>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea class="form-control" id="message" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+
+            <!-- Информация о контактах -->
+            <div class="col-md-6 p-3">
+                <h4>Наши контакты</h4>
+                <p>
+                    📄 ООО «ТехноСервис»<br>
+                    Адрес: 117321, г. Москва, ул. Центральная, д. 15, офис 412<br>
+                    Телефон: +7 (495) 765-43-21<br>
+                    Email: contact@technoservice.ru<br>
+                    Время работы: Пн–Пт с 8:30 до 17:30 (по Московскому времени)<br>
+                    <br>
+                </p>
+                <p>
+                    ✉️ Напишите нам: <br>
+                    Если у вас есть вопросы по услугам, сотрудничеству или технические проблемы — вы можете написать на
+                    наш email:<br>
+                    📩 support@technoservice.ru <br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+<div class="d-flex align-items-end justify-content-between">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+            crossorigin="anonymous"></script>
+</div>
+</body>
+</html>
